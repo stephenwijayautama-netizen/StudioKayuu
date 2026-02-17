@@ -5,7 +5,7 @@ import Tambahin_keranjang from "./pages/Tambahin_keranjang";
 import Promo from "./pages/Promo";
 import Product_Terlaris from "./pages/Product_Terlaris";
 import Login from "./pages/Login";
-
+import Register from "./pages/Register";
 function App() {
   return (
     <Router>
@@ -16,6 +16,7 @@ function App() {
         <Route path="/Promo" element={<Promo />} />
         <Route path="/Product_Terlaris" element={<Product_Terlaris />} />
         <Route path="/Login" element={<Login />} />
+        <Route path="/Register" element={<Register />} />
       </Routes>
     </Router>
   );

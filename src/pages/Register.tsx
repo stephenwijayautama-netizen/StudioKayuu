@@ -3,12 +3,12 @@ import { useState } from "react";
 import loginIllustration from "../assets/imglogin.svg";
 import SKlogo from "../assets/Logo.svg";
 
-export default function Login() {
+export default function Register() {
   const [openMenu, setOpenMenu] = useState(false);
 
   return (
     <>
-      {/* STYLE KHUSUS LOGIN */}
+      {/* STYLE KHUSUS REGISTER */}
       <style>{`
         * {
           box-sizing: border-box;
@@ -74,16 +74,24 @@ export default function Login() {
           color: red;
         }
 
-        .login-form input {
+        .login-form input,
+        .login-form textarea {
           padding: 16px 22px;
           border-radius: 999px;
           border: 1px solid #ddd;
           font-size: 14px;
           outline: none;
           width: 100%;
+          resize: none;
         }
 
-        .login-form input:focus {
+        .login-form textarea {
+          border-radius: 20px;
+          min-height: 90px;
+        }
+
+        .login-form input:focus,
+        .login-form textarea:focus {
           border-color: #f59e0b;
         }
 
@@ -245,7 +253,6 @@ export default function Login() {
         </div>
 
         <div className="flex-1 flex justify-end gap-6">
-          {/* LOGIN BUTTON AKTIF */}
           <Link
             to="/login"
             className="text-xs font-bold text-white bg-[#020617] px-6 py-2 rounded-full"
@@ -262,7 +269,7 @@ export default function Login() {
         </div>
       </nav>
 
-      {/* SIDEBAR MENU + LOGO */}
+      {/* SIDEBAR */}
       <div className="sidebar-wrapper">
         <button className="sidebar-button" onClick={() => setOpenMenu(true)}>
           ☰
@@ -273,7 +280,6 @@ export default function Login() {
       {openMenu && (
         <>
           <div className="sidebar-overlay" onClick={() => setOpenMenu(false)} />
-
           <aside className="sidebar-menu">
             <div className="sidebar-top">
               <button
@@ -305,28 +311,35 @@ export default function Login() {
         </>
       )}
 
-      {/* LOGIN CONTENT */}
+      {/* REGISTER CONTENT */}
       <div className="login-page">
         <div className="login-card">
           <div className="illustration">
-            <img src={loginIllustration} alt="login" />
+            <img src={loginIllustration} alt="register" />
           </div>
 
           <form className="login-form">
-            <label>
-              Login <span className="required">*</span>
-            </label>
-            <input type="text" placeholder="Email atau Username" />
+            <label>Nama</label>
+            <input type="text" placeholder="Nama lengkap" />
+
+            <label>Email</label>
+            <input type="email" placeholder="Email aktif" />
 
             <label>Password</label>
             <input type="password" placeholder="••••••••" />
 
-            <button type="submit">Masuk</button>
+            <label>Re-enter Password</label>
+            <input type="password" placeholder="••••••••" />
+
+            <label>Address</label>
+            <textarea placeholder="Alamat lengkap" />
+
+            <button type="submit">Daftar</button>
 
             <p className="register">
-              Belum punya akun?{" "}
-              <Link to="/register">
-                <span>Register here</span>
+              Sudah punya akun?{" "}
+              <Link to="/login">
+                <span>Login here</span>
               </Link>
             </p>
           </form>
